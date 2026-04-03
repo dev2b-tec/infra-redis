@@ -3,6 +3,9 @@ services:
     image: redis:7-alpine
     container_name: redis
     restart: unless-stopped
+    env_file:
+      - path: .env.app
+        required: false
     command: redis-server --requirepass ${REDIS_PASSWORD} --appendonly yes
     volumes:
       - redis_data:/data
